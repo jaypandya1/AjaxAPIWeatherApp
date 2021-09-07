@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!-- 
+Name: Jay Pandya
+Student Id: 301176481 -->
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 6 _ 301176481</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css''><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+
+<div class="weatherBox">
+  <h1>Live Weather Web Application</h1>
+  <div class="description">
+  <h2 id="temp" class="d-inline-block"></h2>
+  <div id="icon" class="d-inline-block"></div>
+    <p class="current">Location:</p>
+  <div id="city"></div>
+  <p class="current">Current Status:</p>
+  <div id="status"></div>
+    <br/>
+  <div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-primary fahrenheit active">
+    <input type="radio" name="options" id="Fahrenheit" autocomplete="off" checked> Fahrenheit
+  </label>
+  <label class="btn btn-primary celcius">
+    <input type="radio" name="options" id="Celcius" autocomplete="off"> Celcius
+  </label>
+</div>
+  </div>
+</div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
+<!-- 
+Name: Jay Pandya
+Student Id: 301176481 -->
+<script>
+
+  var gMapsLoaded = false;
+  window.gMapsCallback = function(){
+  gMapsLoaded = true;
+  $(window).trigger('gMapsLoaded');}
+  
+  window.loadGoogleMaps = function(){
+  if(gMapsLoaded) return window.gMapsCallback();
+  var script_tag = document.createElement('script');
+  script_tag.setAttribute("type","text/javascript");
+  script_tag.setAttribute("src","http://maps.google.com/maps/api/js?key=KEYGOESHERE&sensor=false&callback=gMapsCallback");
+  (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+  }
+  
+  $(document).ready(function(){
+  
+     function initialize(){
+  
+  var mapOptions = {
+  
+    }
+  };
+  
+  map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
+  }
+  
+  $(window).bind('gMapsLoaded', initialize);
+  window.loadGoogleMaps();
+  });
+  
+  </script>
+  
+  <div style="height:400px;width:650px;" id="map_canvas"></div>
+
+</body>
+</html>
